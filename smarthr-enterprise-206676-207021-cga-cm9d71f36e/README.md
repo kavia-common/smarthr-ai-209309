@@ -19,5 +19,5 @@ PORT=3001 npm start
 
 ## Endpoints
 
-- `GET /` — plain text “service is running” message
+- `GET /` — basic HTML home page with a link to `/health`
 - `GET /health` — health check JSON

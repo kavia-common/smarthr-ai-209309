@@ -33,13 +33,30 @@ app.get('/health', (req, res) => {
 });
 
 /**
- * Root endpoint: helpful message to confirm the server is up.
+ * Root endpoint: a tiny home page to confirm the server is up.
+ * Keep it dependency-free and human-friendly for quick preview validation.
  */
 app.get('/', (req, res) => {
-  res
-    .status(200)
-    .type('text/plain')
-    .send('SmartHR AI service scaffold is running. Try GET /health\n');
+  const html = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SmartHR AI Service</title>
+  </head>
+  <body>
+    <main>
+      <h1>SmartHR AI service scaffold</h1>
+      <p>The server is running.</p>
+      <p>
+        Health check:
+        <a href="/health">GET /health</a>
+      </p>
+    </main>
+  </body>
+</html>`;
+
+  res.status(200).type('text/html; charset=utf-8').send(html);
 });
 
 const port = resolvePort();
